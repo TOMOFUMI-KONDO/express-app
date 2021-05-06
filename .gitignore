@@ -67,6 +67,7 @@ typings/
 *.tgz
 .yarn-integrity
 .env
+.env.local
 .next
 /dist
 /.idea

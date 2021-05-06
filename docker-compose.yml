@@ -9,8 +9,19 @@ services:
       TZ: Asia/Tokyo
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ./.logs:/var/lib/pgsql
     ports:
       - 5432:5432
+  app:
+    build: .
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://dbuser:pass@db:5432/mydb?schema=public
+    volumes:
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+    ports:
+      - 3000:3000
 
 volumes:
   postgres-data:
